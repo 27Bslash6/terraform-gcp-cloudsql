@@ -40,7 +40,7 @@ resource "google_sql_database_instance" "master" {
 
     database_flags {
       name  = "character_set_server"
-      value = "utf8mb4"
+      value = "${var.database_charset}"
     }
   }
 }
@@ -67,4 +67,22 @@ resource "google_sql_database_instance" "failover" {
       zone = "${var.failover_location_preference_zone}"
     }
   }
+}
+
+# User configuration
+
+resource "google_sql_user" "users" {
+  name     = "${var.cloudsql_username}"
+  instance = "${google_sql_database_instance.master.name}"
+  host     = "${var.cloudsql_userhost}"
+  password = "${var.cloudsql_userpass}"
+}
+
+# Database configuration
+
+resource "google_sql_database" "default" {
+  name      = "${var.database_name}"
+  instance  = "${google_sql_database_instance.master.name}"
+  charset   = "${var.database_charset}"
+  collation = "${var.database_collation}"
 }
