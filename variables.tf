@@ -73,6 +73,9 @@ variable "cloudsql_userhost" {
 }
 
 # Database character format
+variable "database_name" {
+  default = "utf8mb4"
+}
 
 variable "database_charset" {
   default = "utf8mb4"
