@@ -61,3 +61,23 @@ variable "failover_location_preference_zone" {
   description = "Additional zone in which to create a failover replice"
   default     = "us-west1-b"
 }
+
+# User configuration
+
+variable "cloudsql_username" {}
+
+variable "cloudsql_userpass" {}
+
+variable "cloudsql_userhost" {
+  default = "%"
+}
+
+# Database character format
+
+variable "database_charset" {
+  default = "utf8mb4"
+}
+
+variable "database_collation" {
+  default = "utf8mb4_unicode_ci"
+}
