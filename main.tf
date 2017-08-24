@@ -1,9 +1,9 @@
 # Configure the Google Cloud provider
-provider "google" {
-  credentials = "${file("${var.gcp_credentials}")}"
-  project     = "${var.gcp_project}"
-  region      = "${var.gcp_region}"
-}
+# provider "google" {
+#   credentials = "${file("${var.gcp_credentials}")}"
+#   project     = "${var.gcp_project}"
+#   region      = "${var.gcp_region}"
+# }
 
 # Master instance
 # https://www.terraform.io/docs/providers/google/r/sql_database_instance.html
@@ -45,10 +45,9 @@ resource "google_sql_database_instance" "master" {
   }
 }
 
-# Failover replica
-# https://www.terraform.io/docs/providers/google/r/sql_database_instance.html
+output "" resource "google_sql_database_instance" "failover" {
+  # Failover replica  # https://www.terraform.io/docs/providers/google/r/sql_database_instance.html
 
-resource "google_sql_database_instance" "failover" {
   name                 = "${var.cloudsql_master_name}-failover"
   master_instance_name = "${var.cloudsql_master_name}"
   region               = "${var.gcp_region}"
@@ -70,7 +69,6 @@ resource "google_sql_database_instance" "failover" {
 }
 
 # User configuration
-
 resource "google_sql_user" "users" {
   name     = "${var.cloudsql_username}"
   instance = "${google_sql_database_instance.master.name}"

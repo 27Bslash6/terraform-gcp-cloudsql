@@ -2,18 +2,18 @@
 
 # https://www.terraform.io/docs/providers/google/r/sql_database_instance.html
 
-variable "gcp_project" {
-  description = "Name of the Google Compute project to use"
-}
-
-variable "gcp_credentials" {
-  description = "Credentials file to use for accessing Google Compute resources"
-}
-
-variable "gcp_region" {
-  description = "Google Compute region to use for the DB instances"
-  default     = "us-west1"
-}
+# variable "gcp_project" {
+#   description = "Name of the Google Compute project to use"
+# }
+#
+# variable "gcp_credentials" {
+#   description = "Credentials file to use for accessing Google Compute resources"
+# }
+#
+# variable "gcp_region" {
+#   description = "Google Compute region to use for the DB instances"
+#   default     = "us-west1"
+# }
 
 # Cloud SQL variables
 
