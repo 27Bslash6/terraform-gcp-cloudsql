@@ -38,6 +38,11 @@ variable "disk_size" {
   default     = "10"
 }
 
+variable "disk_autoresize" {
+  description = "(Optional, Second Generation, Default: true) Configuration to increase storage size automatically."
+  default     = true
+}
+
 variable "disk_type" {
   description = "(Optional, Second Generation, Default: PD_SSD) The type of data disk: PD_SSD or PD_HDD"
   default     = "PD_SSD"
