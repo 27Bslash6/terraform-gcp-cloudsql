@@ -34,7 +34,7 @@ variable "cloudsql_tier" {
 }
 
 variable "disk_size" {
-  description = " (Optional, Second Generation, Default: 10) The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased."
+  description = "(Optional, Second Generation, Default: 10) The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased."
   default     = "10"
 }
 
