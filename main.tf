@@ -45,7 +45,7 @@ resource "google_sql_database_instance" "master" {
   }
 }
 
-output "" resource "google_sql_database_instance" "failover" {
+resource "google_sql_database_instance" "failover" {
   # Failover replica  # https://www.terraform.io/docs/providers/google/r/sql_database_instance.html
 
   name                 = "${var.cloudsql_master_name}-failover"
