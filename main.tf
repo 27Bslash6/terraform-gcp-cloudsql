@@ -9,12 +9,13 @@
 # https://www.terraform.io/docs/providers/google/r/sql_database_instance.html
 
 resource "google_sql_database_instance" "master" {
-  name    = "${var.cloudsql_master_name}"
-  region  = "${var.gcp_region}"
-  project = "${var.gcp_project}"
+  name = "${var.cloudsql_master_name}"
+
+  region = "${var.gcp_region}"
+
+  # project = "${var.gcp_project}"
 
   database_version = "${var.cloudsql_version}"
-
   settings {
     tier      = "${var.cloudsql_tier}"
     disk_type = "${var.disk_type}"
@@ -48,10 +49,10 @@ resource "google_sql_database_instance" "master" {
 resource "google_sql_database_instance" "failover" {
   # Failover replica  # https://www.terraform.io/docs/providers/google/r/sql_database_instance.html
 
-  name                 = "${var.cloudsql_master_name}-failover"
-  master_instance_name = "${var.cloudsql_master_name}"
-  region               = "${var.gcp_region}"
-  project              = "${var.gcp_project}"
+  name                 = "${google_sql_database_instance.master.name}-failover"
+  master_instance_name = "${google_sql_database_instance.master.name}"
+
+  region = "${var.gcp_region}"
 
   database_version = "${var.cloudsql_version}"
 

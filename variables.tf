@@ -10,10 +10,10 @@
 #   description = "Credentials file to use for accessing Google Compute resources"
 # }
 #
-# variable "gcp_region" {
-#   description = "Google Compute region to use for the DB instances"
-#   default     = "us-west1"
-# }
+variable "gcp_region" {
+  description = "Google Compute region to use for the DB instances"
+  default     = "us-west1"
+}
 
 # Cloud SQL variables
 
